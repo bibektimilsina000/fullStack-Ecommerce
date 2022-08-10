@@ -1,0 +1,25 @@
+const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Token ${token}`,
+      };
+
+
+
+
+
+
+
+
+OrderSerializer(data={'first_name': 'Bibek', 'last_name': 'Timilsina', 'email': 'bibektimilsina000@gmail.com', 'address': 'MAITIDEVI', 'zipcode': '21800', 'place': 'dhiddi', 'phone': '+9779745308153'}):
+    id = IntegerField(label='ID', read_only=True)
+    first_name = CharField(max_length=100)
+    last_name = CharField(max_length=100)
+    email = CharField(max_length=100)
+    address = CharField(max_length=100)
+    zipcode = CharField(max_length=100)
+    place = CharField(max_length=100)
+    phone = CharField(max_length=100)
+    items = OrderItemSerializer(many=True):
+        price = DecimalField(decimal_places=2, max_digits=8)
+        product = PrimaryKeyRelatedField(queryset=Product.objects.all())
+        quantity = IntegerField(required=False)
